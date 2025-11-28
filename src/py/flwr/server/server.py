@@ -710,9 +710,9 @@ class ResearchMetricsCollector:
         os.makedirs(self.output_dir, exist_ok=True)
         
         # Create subdirectories for different analyses
-        os.makedirs(f"{self.output_dir}/ablation", exist_ok=True)      # Changed output_dir to self.output_dir
-        os.makedirs(f"{self.output_dir}/comparison", exist_ok=True)   # Changed output_dir to self.output_dir
-        os.makedirs(f"{self.output_dir}/composition", exist_ok=True)  # Changed output_dir to self.output_dir
+        os.makedirs(f"{self.output_dir}/ablation", exist_ok=True)       
+        os.makedirs(f"{self.output_dir}/comparison", exist_ok=True)   
+        os.makedirs(f"{self.output_dir}/composition", exist_ok=True)  
     
     # Rest of the initialization code...
         
@@ -2180,11 +2180,9 @@ class Server:
             num_clients=sample_size, min_num_clients=min_num_clients
         )
 
-        # ***** CHANGE THIS SECTION *****
-        # OLD CODE:
-        # num_buckets = 2  # Fixed at 2 buckets for simplicity
+
         
-        # NEW CODE:
+        
         # Get number of buckets from strategy, with fallback to 2
         num_buckets = getattr(self.strategy, 'num_buckets', 2)
         
@@ -2344,7 +2342,7 @@ class Server:
                     if dp_required:
                         print(f"[PROFILE] Small bucket detected (size {bucket_size}), applying differential privacy protection")
                         
-                        # CHANGE THIS LINE to capture both return values:
+                        
                         noisy_bucket_avg, privacy_params = self.add_bucket_adaptive_dp_noise(
                             bucket_avg, 
                             bucket_size=bucket_size,
